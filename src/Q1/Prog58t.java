@@ -9,7 +9,7 @@ public class Prog58t {
         System.out.print("Enter amount charged: $");
         double charge = input.nextDouble();
 
-        System.out.print("Enter amount recieved: $");
+        System.out.print("Enter amount received: $");
         double recieved = input.nextDouble();
 
         double change = recieved - charge;
@@ -40,7 +40,7 @@ public class Prog58t {
 
 /*
 Enter amount charged: $125.32
-Enter amount recieved: $140
+Enter amount received: $140
 Amount due: $14.680000000000007
 Dollars: 14
 Quarters: 2
