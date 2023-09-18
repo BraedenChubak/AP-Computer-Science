@@ -17,3 +17,9 @@ public class Prog82a {
         System.out.println("The fine is: $" + fine + ".00");
     }
 }
+
+/*
+Enter the speed limit: 30
+Enter the vehicle speed: 44
+The fine is: $90.00
+ */
