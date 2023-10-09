@@ -2,7 +2,7 @@ package Q1;
 
 import java.util.*;
 
-public class LP511 {
+public class LP514 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("How many times do you want to roll the dice? ");

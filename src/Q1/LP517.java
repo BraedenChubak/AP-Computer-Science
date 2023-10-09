@@ -8,9 +8,14 @@ public class LP517 {
         String password = "Daniel Szelogowski";
         int trycount = 1;
         String guess = "";
-        while (trycount < 3) {
+        while (trycount <= 3) {
             System.out.print("What is the password? ");
-            guess =
+            guess = input.nextLine();
+            if (guess.equals(password)) {
+                System.out.println("Password Correct!");
+                break;
+            }
+            trycount++;
         }
     }
 }
