@@ -24,14 +24,9 @@ public class Cl93a {
         due = BaseR + CityT + SurC;
         latedue = due * 1.04;
     }
-    public double getBaseR() {return BaseR;}
-    public double getSurC() {return SurC;}
-    public double getCityT() {return CityT;}
-    public double getdue() {return due;}
-    public double getlatedue() {return latedue;}
 
     public String toString() {
-        return "KWH" + KWH + "\nBase Rate" + BaseR + "\nSurcharge" + SurC + "\nCityT" + CityT;
+        return "KWH:  " + KWH + "\nBase Rate:  " + BaseR + "\nSurcharge:  " + SurC + "\nCityT:  " + CityT + "\nAmount Due:  " + due + "\nLate Due:  " + latedue;
     }
 
 
