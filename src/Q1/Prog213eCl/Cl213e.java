@@ -34,11 +34,11 @@ public class Cl213e {
     }
 
     public void calc2(int g1, int g2, int g3, int g4, int g5, int tot) {
-        percent1 = g1 / tot;
-        percent2 = g2 / tot;
-        percent3 = g3 / tot;
-        percent4 = g4 / tot;
-        percent5 = g5 / tot;
+        percent1 = (double)100 * g1 / tot;
+        percent2 = (double)100 * g2 / tot;
+        percent3 = (double)100 * g3 / tot;
+        percent4 = (double)100 * g4 / tot;
+        percent5 = (double)100 * g5 / tot;
     }
 
     public int getGroup1() { return group1; }
