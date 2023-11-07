@@ -35,3 +35,9 @@ public class Prog213fArray {
         }
     }
 }
+
+/*
+The Cost of 1338 KWH is $93.66
+The Cost of 9631 KWH is $521.55
+The Cost of 13561 KWH is $682.44
+ */
