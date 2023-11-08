@@ -7,9 +7,9 @@ public class Cl214b {
     private double shiftCode;
     private double hoursWorked;
     private double grossPay;
-    private double taxRate;
     private double withholding;
     private double FICA;
+    private double netPay;
 
     public Cl214b(int num, double pay, double rate, double code, double hours) {
         empNum = num;
@@ -18,22 +18,28 @@ public class Cl214b {
         shiftCode = code;
         hoursWorked = hours;
         grossPay = 0;
-        taxRate = 0;
         withholding = 0;
         FICA = 0;
+        netPay = 0;
     }
 
     public void calc() {
         grossPay = baseRate * hoursWorked;
 
-        if (grossPay < 100) { taxRate = 0; }
-        if (grossPay < 150) { taxRate = 0.08; }
-        if (grossPay < 200) { taxRate = 0.12; }
-        if (grossPay < 300) { taxRate = 0.15; }
-        else { taxRate = 0.175; }
+        if (grossPay < 100) { withholding = 0; }
+        else if (grossPay < 150) { withholding = 0.08 * grossPay; }
+        else if (grossPay < 200) { withholding = 0.12 * grossPay; }
+        else if (grossPay < 300) { withholding = 0.15 * grossPay; }
+        else { withholding = 0.175 * grossPay; }
 
-        withholding = grossPay * taxRate;
         if (YTDPay > 17300) { FICA = 0; }
+        else if (YTDPay + grossPay <= 17300) { FICA = grossPay * 0.0605; }
+        else { FICA = (YTDPay + grossPay - 17300) * 0.0605;}
 
+        netPay = grossPay - withholding - FICA;
+    }
+
+    public String toString() {
+        return String.format("Employee Number %d\nHours %.2f Rate %.2f Shift Factor %.2f\n\tCurrent\t\t\t   YTD\nGross Pay  %.2f    %.2f\nWithholding  %.2f\nFICA  %.2f\nNet Pay   %.2f\n---------------------------", empNum, hoursWorked, baseRate, shiftCode, grossPay, YTDPay, withholding, FICA, netPay);
     }
 }
