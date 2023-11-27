@@ -37,5 +37,3 @@ package Q2;
         public double getWeight() { return myWeight; }
         public String getName() { return myName; }
     }
-
-}

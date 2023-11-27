@@ -2,6 +2,7 @@ package Q2;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class BigArray2 {
@@ -83,11 +84,76 @@ public class BigArray2 {
             cats[3] = temp;
 
             //  Print the names of the cats on the list.
+            System.out.println("\n10. The names of all the cats currently are: ");
+            for (Cat cat : cats) {
+                if (cat != null) {
+                    System.out.print(cat.getName() + "\t");
+                }
+            }
+
             //  Remove all cats under $26. Print the costs of each cat remaining on the list.
+            int i = 0;
+            // for (int i = 0; i < numCats)
+            while (i < numCats) {
+                if (cats[1].getCost() < 26) {
+                    for (int j = i; j < numCats - 1; j++) {
+                        cats[j] = cats[j + 1];
+                    }
+                    numCats--;
+                } else {
+                    i++;
+                }
+            }
+
+            System.out.println("\n11. The cats that cost $26 or more cost: ");
+            for (int lcv = 0; lcv < numCats; lcv++) {
+                System.out.print(cats[lcv].getCost() + "\t");
+            }
+            System.out.println();
+
             //  All cats heavier than 15 pounds need to go on a diet <--  no for-each this time.  Print the names of the cats being put on a diet.
+            System.out.println("\n12. The cats going on a diet are:");
+            for (int lcv = 0; lcv < numCats; lcv++) {
+                Cat cat = cats[lcv];
+                if (cat.getWeight() > 15) {
+                    System.out.print(cat.getName() + "\t");
+                }
+            }
+            System.out.println();
 
         } catch (IOException e) {
             System.out.println("Can't find data file!");
         }
     }
 }
+/*
+1. All the cats:
+Name	Weight	Age	Cost
+Inky	15.69	2	35.79
+Panda	14.3	6	15.03
+Rascal	21.1	21	0.0
+Blacky	13.99	3	26.89
+Taffy	24.5	10	56.89
+Toby	17.2	10	37.57
+
+2. The Third cat is named: Rascal
+3. The updated weight is: 27.2
+
+7. The updated list is:
+Name	Weight	Age	Cost
+Inky	15.69	2	35.79
+Angel	3.6	1	25.99
+Panda	14.3	6	15.03
+Blacky	13.99	3	26.89
+Taffy	24.5	10	56.89
+Toby	27.2	10	37.57
+Gimpy	14.3	10	29.99
+
+10. The names of all the cats currently are:
+Inky	Blacky	Sugar	Angel	Taffy	Toby	Gimpy	Panda
+11. The cats that cost $26 or more cost:
+35.79	26.89	33.25	25.99	56.89	37.57	29.99	15.03
+
+12. The cats going on a diet are:
+Inky	Sugar	Taffy	Toby
+ */
