@@ -30,10 +30,10 @@ public class ClLP310 {
         change = tendered - total;
     }
 
-    public String toString() {
+    public void returnstuff() {
         System.out.println("Total before tax: $" + Math.round(subTotal * 100) / 100.0);
         System.out.println("Tax: $" + Math.round(tax * 100) / 100.0);
-        System.out.println("Final total: %" + Math.round(total * 100) / 100.0);
+        System.out.println("Final total: $" + Math.round(total * 100) / 100.0);
         System.out.println("Change: $" + Math.round(change * 100) / 100.0);
     }
 }
