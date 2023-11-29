@@ -36,6 +36,6 @@ public class ClLP314 {
     }
 
     public String toString() {
-        return String.format("Candidate\t\tVotes\tPercentage\nAubrey\t\t%d\t%.2f\nMartinez\t%d\t%.2f", totalA, percentA, totalM, percentM);
+        return String.format("Candidate\tVotes\tPercentage\nAubrey\t\t%d\t%.2f\nMartinez\t%d\t%.2f", totalA, percentA, totalM, percentM);
     }
 }
