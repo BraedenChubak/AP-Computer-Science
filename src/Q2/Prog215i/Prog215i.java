@@ -50,7 +50,7 @@ public class Prog215i {
                 }
             }
 
-            System.out.println("Vehicle\tMiles]tGallons\tMPG");
+            System.out.println("Vehicle\tMiles\tGallons\tMPG");
             for (int lcv = 0; lcv < cars.size(); lcv++) {
                 System.out.println(cars.get(lcv));
             }
