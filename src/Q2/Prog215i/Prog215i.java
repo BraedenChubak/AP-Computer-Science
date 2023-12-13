@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Prog215i {
     public static void main(String[] args) {
         try {
-            Scanner input = new Scanner(new File("Langdat/prog215i.dat"));
+            Scanner input = new Scanner(new File("Langdat/prog215i.txt"));
             ArrayList<Cl215i> cars = new ArrayList<>();
             double average = 0;
 
