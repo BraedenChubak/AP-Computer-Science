@@ -54,7 +54,7 @@ public class BigArrayListCat {
             cats.add(new Cat("Gimpy", 14.3, 10, 29.99));
 
 //          Print the updated list with a for-each loop
-            System.out.println("7. All the cats (again):");
+            System.out.println("\n7. All the cats (again):");
             System.out.println("Name\tWeight\tAge\tCost");
             for(Cat cat : cats) {
                 System.out.printf("%s\t%f\t%d\t%f\n", cat.getName(), cat.getWeight(), cat.getAge(), cat.getCost());
@@ -73,14 +73,24 @@ public class BigArrayListCat {
 
 //          Print the names of the cats on the list.
 
-            System.out.println("7. Every cat's name is: ");
+            System.out.println("\n10. Every cat's name is: ");
             for(Cat cat : cats) {
                 System.out.print(cat.getName() + "\t");
-                System.out.println();
             }
+            System.out.println();
 
 //          Remove all cats under $26. Print the costs of each cat remaining on the list.
-
+            for (int lcv = 0; lcv < cats.size(); lcv++) {
+                if (cats.get(lcv).getCost() < 26) {
+                    cats.remove(lcv);
+                    lcv--;
+                }
+            }
+            System.out.println("\n11. The costs of the remaining cats are: ");
+            for (Cat cat : cats) {
+                System.out.print("$" + cat.getCost() + " ");
+            }
+            System.out.println();
 
 //          All cats heavier than 15 pounds need to go on a diet <--  no for-each this time.
 //          Print the names of the cats being put on a diet.
@@ -100,3 +110,38 @@ public class BigArrayListCat {
         }
     }
 }
+/*
+1. All the cats:
+Name	Weight	Age	Cost
+Inky	15.690000	2	35.790000
+Panda	14.300000	6	15.030000
+Rascal	21.100000	21	0.000000
+Blacky	13.990000	3	26.890000
+Taffy	24.500000	10	56.890000
+Toby	17.200000	10	37.570000
+
+2. The third cat is named: Rascal
+
+3. The updated weight is: 27.2
+
+7. All the cats (again):
+Name	Weight	Age	Cost
+Inky	15.690000	2	35.790000
+Angel	3.600000	1	25.990000
+Panda	14.300000	6	15.030000
+Blacky	13.990000	3	26.890000
+Taffy	24.500000	10	56.890000
+Toby	27.200000	10	37.570000
+Gimpy	14.300000	10	29.990000
+
+10. Every cat's name is:
+Inky	Blacky	Sugar	Angel	Taffy	Toby	Gimpy	Panda
+
+11. The costs of the remaining cats are:
+$35.79 $26.89 $33.25 $56.89 $37.57 $29.99
+
+12. The cats being put on a diet are:
+Inky	Sugar	Taffy	Toby
+
+Process finished with exit code 0
+ */
