@@ -17,6 +17,7 @@ public class Prog465a {
                     else { mat2[r-4][c] = input.nextInt(); }
                 }
             }
+
             for (int r = 0; r < mat1.length; r++) {
                 for (int c = 0; c < mat1[0].length; c++) {
                     if (mat1[r][c] > mat2[r][c]) { matFinal[r][c] = mat1[r][c]; }
