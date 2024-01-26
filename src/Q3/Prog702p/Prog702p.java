@@ -79,9 +79,6 @@ public class Prog702p {
 
             String alphabet = "abcdefghijklmnopqrstuvwxyz";
             int[] lettercount = new int[26];
-            for (int lcv = 0; lcv < lettercount.length; lcv++) {
-                lettercount[lcv] = 0;
-            }
 
             for (int lcv = 0; lcv < allWords.length(); lcv++) {
                 for (int letter = 0; letter < alphabet.length(); letter++) {
@@ -91,10 +88,20 @@ public class Prog702p {
                 }
             }
 
+            int highestcount = 0;
+            String highestletters = "";
+            for (int lcv = 0; lcv < lettercount.length; lcv++) {
+                if (highestcount == lettercount[lcv]) {
+                    highestletters += alphabet.substring(lcv,lcv+1) + " ";
+                }
+                if (highestcount < lettercount[lcv]) {
+                    highestletters = "";
+                    highestcount = lettercount[lcv];
+                    highestletters += alphabet.substring(lcv,lcv+1) + " ";
+                }
+            }
 
-
-
-
+            System.out.println("The beepers' most used letters are: " + highestletters);
 
         } catch (IOException e) {
             System.out.println("Can't find data file!");
