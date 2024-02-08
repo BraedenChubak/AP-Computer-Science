@@ -1,6 +1,6 @@
 package Q3.Prog702q;
 
-public class Vehicle implements names{
+public class Vehicle implements names {
     private String name;
     private int tires;
     protected double value;
@@ -12,6 +12,6 @@ public class Vehicle implements names{
     }
 
     public String getName() { return name; }
-    public int getTires() { return tires; }
+    public int getTire() { return tires; }
     public double getValue() { return value; }
 }

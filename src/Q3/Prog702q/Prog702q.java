@@ -53,21 +53,21 @@ public class Prog702q {
             for (Vehicle v : list) {
                 totVal += v.getValue();
                 if (v instanceof Truck) { // Truck stuff
-                    truckTires += v.getTires();
+                    truckTires += v.getTire();
                     if (v.getValue() < badTruck) {
                         badTruck = v.getValue();
                         badTruckName = v.getName();
                     }
                 }
                 else if (v instanceof Bus) { // Bus stuff
-                    busTires += v.getTires();
+                    busTires += v.getTire();
                     if (((Bus)v).getCity().length() > longCity.length()) {
                         longCity = ((Bus)v).getCity();
                     }
                 }
                 else { // Car stuff
                     carVal += v.getValue();
-                    carTires += v.getTires();
+                    carTires += v.getTire();
                 }
             }
 
