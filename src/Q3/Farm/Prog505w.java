@@ -52,7 +52,6 @@ public class Prog505w {
                 }
             }
 
-            // TODO: report income of the day, cumulative weight of all animals,
             double farmProfit = 0;
             int totalWeight = 0;
             for (int lcv = 0; lcv < animals.size(); lcv++) {
