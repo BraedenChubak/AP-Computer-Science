@@ -1,5 +1,5 @@
 package Q3.Farm;
-
+import java.util.ArrayList;
 public interface IFarm {
     /** Feeds all cows where farm has enough food */
     private boolean feedCows() { return false; }
