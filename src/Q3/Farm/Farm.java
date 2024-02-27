@@ -68,5 +68,22 @@ public class Farm implements IFarm {
         return false;
     }
 
+    private double cowIncome(double perPound) {
+        int totalmilk = 0;
+        for (Cow cow : myCows) {
+            totalmilk += cow.getMilk();
+        }
+        return totalmilk * perPound;
+    }
+
+    private double horseIncome() {
+        int horseprofit = 0;
+        for (Horse horse : myHorses) {
+            horseprofit += horse.getRides() * horse.getRideCost();
+        }
+        return horseprofit;
+    }
+
+
 }
 
