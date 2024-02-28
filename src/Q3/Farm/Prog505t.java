@@ -41,7 +41,7 @@ public class Prog505t {
 
             Farm farm = new Farm(horses, cows, haybales, corncobs, haycost, corncost);
             double income = farm.farmIncome();
-            System.out.println("The income of the farm is: $" + );
+            System.out.println("The income of the farm is: $" + income);
 
         } catch (IOException e) {
             System.out.println("Can't find data file!");
