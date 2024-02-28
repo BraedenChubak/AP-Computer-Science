@@ -77,13 +77,49 @@ public class Farm implements IFarm {
     }
 
     private double horseIncome() {
-        int horseprofit = 0;
+        double horseprofit = 0;
         for (Horse horse : myHorses) {
             horseprofit += horse.getRides() * horse.getRideCost();
         }
         return horseprofit;
     }
 
+    public double farmIncome() {
+        return cowIncome(0.2) + horseIncome();
+    }
 
+    public double getCost() {
+        int totalhay = 0;
+        int totalcorn = 0;
+        for (Cow cow : myCows) {
+            totalhay += cow.getNumHayBales();
+            totalcorn += cow.getNumCorn();
+        }
+        for (Horse horse : myHorses) {
+            totalhay += horse.getNumHayBales();
+            totalcorn += horse.getNumCorn();
+        }
+
+        return (totalhay * myHayCost) + (totalcorn * myCornCost);
+    }
+
+    public int getWeight() {
+        int totalweight = 0;
+        for (Cow cow : myCows) {
+            totalweight += cow.getWeight();
+        }
+        for (Horse horse : myHorses) {
+            totalweight += horse.getWeight();
+        }
+        return totalweight;
+    }
+
+    public ArrayList<Cow> getCows() {
+        return myCows;
+    }
+
+    public ArrayList<Horse> getHorses() {
+        return myHorses;
+    }
 }
 
