@@ -114,12 +114,12 @@ public class Farm implements IFarm {
         return totalweight;
     }
 
-    public ArrayList<Cow> getCows() {
-        return myCows;
-    }
+    public ArrayList<Cow> getCows() { return myCows; }
 
-    public ArrayList<Horse> getHorses() {
-        return myHorses;
-    }
+    public ArrayList<Horse> getHorses() { return myHorses; }
+
+    public int getMyNumCorn() { return myNumCorn; }
+
+    public int getMyNumHayBales() { return myNumHayBales; }
 }
 
