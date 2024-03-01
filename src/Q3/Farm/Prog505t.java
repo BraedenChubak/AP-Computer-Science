@@ -46,8 +46,8 @@ public class Prog505t {
 //          Report the cost of feeding the animals for a day
             farm.feedAllAnimals();
             int corncobs2 = farm.getMyNumCorn();
-            int haybales2 = farm.getMyNumCorn();
-            double foodcost = ((corncobs - corncobs2) * corncost) + ((haybales - haybales2) * haycost);
+            int haybales2 = farm.getMyNumHayBales();
+            double foodcost = -1 * ((corncobs - corncobs2) * corncost) + ((haybales - haybales2) * haycost);
             System.out.println("The cost of feeding the animals for a day is: $" + foodcost);
 
 //          It should determine if there is enough food to feed all the animals, if so, feed all the animals and report how many bales of hay and cobs of corn are left in the barn.  If there is not enough food for ALL the animals, none of the animals get fed ☹ - report that there is insufficient food to feed the animals and request an immediate shipment of hay and corn for the amount of needed of each.
@@ -56,7 +56,7 @@ public class Prog505t {
                 else if (0 > haybales2) { System.out.println("There is not enough hay to feed the animals, you need to order " + (-1 * haybales2) + " hay bales!"); }
                 else { System.out.println("There is not enough corn to feed the animals, you need to order " + (-1 * corncobs2) + " corn cobs!"); }
             }
-            else System.out.println("There's enough food to feed the animals!");
+            else System.out.println("There's enough food to feed the animals!  You have " + corncobs2 + " corn cobs and " + haybales2 + " hay bales!");
 
 //          report the cumulative weight of all animals.
             System.out.println("The total weight of all animals is: " + farm.getWeight() + " pounds!");
@@ -86,7 +86,7 @@ public class Prog505t {
                     }
                 }
                 System.out.println("Sold off 2 horses!");
-                cows.remove(lowestHorse);
+                horses.remove(lowestHorse);
             }
 //          Change the first cow.   The cow has a weight of 1250, followed by 80 pounds of milk produced per day, followed by the number of 3 hay bales eaten each day, followed by 4 corncobs eaten each day.
             cows.set(1, new Cow("Cowow", 1250, 80, 3, 4));
@@ -99,3 +99,12 @@ public class Prog505t {
         }
     }
 }
+/*
+The income of the farm is: $259.40000000000003
+The cost of feeding the animals for a day is: $-3578.0
+There's enough food to feed the animals!  You have 2420 corn cobs and 2420 hay bales!
+The total weight of all animals is: 42835 pounds!
+Sold off 3 cows!
+Sold off 2 horses!
+There are 14 cows and 9 horses on the farm!
+ */
