@@ -37,7 +37,8 @@ public class MainForm extends JFrame {
         feedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implement feeding the selected pet
+                getSelectedPet().feed();
+                waitButtons(1);
             }
         });
 
@@ -45,7 +46,8 @@ public class MainForm extends JFrame {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implement playing with the selected pet
+                getSelectedPet().play();
+                waitButtons(1);
             }
         });
 
@@ -53,7 +55,8 @@ public class MainForm extends JFrame {
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implement putting the selected pet to sleep
+                getSelectedPet().sleep();
+                waitButtons(1);
             }
         });
 
@@ -75,14 +78,24 @@ public class MainForm extends JFrame {
     }
 
     public void updateStatusLabel(String status) {
-        // TODO: Update statusLabel with the provided status
+        statusLabel.setText("Pet Status: " + status);
     }
 
     public void updatePetList() {
         petSelectorComboBox.removeAllItems();  // Clear existing items
         // TODO: Update petSelectorComboBox with pet names from petManager
         // After adding the pet, set the selected index to the last item (petManager.getPets().size() - 1)
+        for (Pet bob : petManager.getPets()) {
+            petSelectorComboBox.addItem(bob.getName());
+        }
+        petSelectorComboBox.setSelectedIndex(petManager.getPets().size() - 1);
     }
+
+    public Pet getSelectedPet() {
+        return petManager.getPets().get(petSelectorComboBox.getSelectedIndex());
+    }
+
+
 
     /* ========== DO NOT MODIFY BELOW ========== */
     public void waitButtons(int seconds) {
