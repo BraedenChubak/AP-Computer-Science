@@ -9,6 +9,8 @@ public class MainForm extends JFrame {
     private JPanel mainPanel;
     private JButton feedButton;
     private JButton playButton;
+    private JButton catButton;
+    private JButton dogButton;
     private JButton sleepButton;
     private JLabel statusLabel;
     private JLabel imageLabel;
@@ -38,6 +40,7 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getSelectedPet().feed();
+                updateStatusLabel(getSelectedPet().getStatus());
                 waitButtons(1);
             }
         });
@@ -47,6 +50,7 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getSelectedPet().play();
+                updateStatusLabel(getSelectedPet().getStatus());
                 waitButtons(1);
             }
         });
@@ -56,6 +60,7 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getSelectedPet().sleep();
+                updateStatusLabel(getSelectedPet().getStatus());
                 waitButtons(1);
             }
         });
@@ -66,15 +71,25 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Make sure the action event isn't triggered by the removeAllItems() call
                 if (petSelectorComboBox.getSelectedIndex() == -1) return;
-
-                // TODO: Implement pet selection change
-                // 1. Grab the current pet from the petManager using petSelectorComboBox.getSelectedIndex()
-                // 2. Update statusLabel with the selected pet's status
-                // 3. Update imageLabel with the selected pet's image using setPetImage()
+                updateStatusLabel(getSelectedPet().getStatus())
+                setPetImage(getSelectedPet().getImage());
             }
         });
 
         // TODO: Implement adoption button actions
+        catButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        dogButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
     }
 
     public void updateStatusLabel(String status) {
