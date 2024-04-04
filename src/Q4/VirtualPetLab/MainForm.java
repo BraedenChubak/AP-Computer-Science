@@ -1,4 +1,4 @@
-package VirtualPetLab;
+package Q4.VirtualPetLab;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Base64;
@@ -15,6 +15,7 @@ public class MainForm extends JFrame {
     private JLabel statusLabel;
     private JLabel imageLabel;
     private JComboBox<String> petSelectorComboBox;
+    private JButton foxButton;
     // TODO: add adoption buttons
     // Pet list
     private PetManager petManager = new PetManager();
@@ -71,7 +72,7 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Make sure the action event isn't triggered by the removeAllItems() call
                 if (petSelectorComboBox.getSelectedIndex() == -1) return;
-                updateStatusLabel(getSelectedPet().getStatus())
+                updateStatusLabel(getSelectedPet().getStatus());
                 setPetImage(getSelectedPet().getImage());
             }
         });
@@ -79,13 +80,31 @@ public class MainForm extends JFrame {
         // TODO: Implement adoption button actions
         catButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                String catName = JOptionPane.showInputDialog("Enter new cat name: ");
+                if (!catName.trim().isEmpty()) {
+                    petManager.addPet(new Cat(catName));
+                }
+                updatePetList();
             }
         });
 
         dogButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String dogName = JOptionPane.showInputDialog("Enter new dog name: ");
+                if (!dogName.trim().isEmpty()) {
+                    petManager.addPet(new Dog(dogName));
+                }
+                updatePetList();
+            }
+        });
 
+        foxButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String foxName = JOptionPane.showInputDialog("Enter new fox name: ");
+                if (!foxName.trim().isEmpty()) {
+                    petManager.addPet(new Fox(foxName));
+                }
+                updatePetList();
             }
         });
 
