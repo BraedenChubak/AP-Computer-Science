@@ -10,11 +10,28 @@ public class Library implements LibrarySystem {
     private ArrayList<Patron> patrons;
     private ArrayList<Transaction> transactions;
 
-    // TODO: Implement the constructor
+    public Library() {
+        books = new ArrayList<>();
+        patrons = new ArrayList<>();
+        transactions = new ArrayList<>();
+    }
 
     // Implement interface methods
     @Override
-    public void addBook(Book book) { /* Implementation; remember to add in sorted order */ }
+    public void addBook(Book book) {
+        if (books.size() == 0) {
+            books.add(book);
+        }
+        else {
+            for (int lcv = 0; lcv < books.size(); lcv++) {
+                if (book.getTitle().compareTo(books.get(lcv).getTitle()) >= 0 ) {
+                    books.add(lcv, book);
+                    break;
+                }
+            }
+
+        }
+    }
     @Override
     public void removeBook(String isbn) { /* Implementation */ }
     // Other methods...
