@@ -19,6 +19,11 @@ public class Transaction {
         returnDate = date;
     }
 
+    public String getIsbn() { return isbn; }
+    public String getPatronId() { return patronId; }
+    public String getCheckoutDate() { return checkoutDate; }
+    public String getReturnDate() { return returnDate; }
+
     @Override
     public String toString() {
         return "Transaction{" +
