@@ -3,17 +3,7 @@ package Q4.LibraryManagementLab;
 import java.util.*;
 
 public class BinarySearchUtil {
-    public Book searchTitle(ArrayList<Book> books, String title) {
-        // first we sort
-        for (int lcv = 0; lcv < books.size()-1; lcv++) {
-            if (books.get(lcv).getTitle().compareTo(books.get(lcv+1).getTitle()) > 0) {
-                Book temp = books.get(lcv);
-                books.set(lcv, books.get(lcv+1));
-                books.set(lcv+1, temp);
-            }
-        }
-
-        // then we search
+    public static Book searchTitle(ArrayList<Book> books, String title) {
         int low = 0;
         int high = books.size()-1;
         while (low <= high) {
@@ -24,17 +14,7 @@ public class BinarySearchUtil {
         }
         return null;
     }
-    public Book searchAuthor(ArrayList<Book> books, String author) {
-        // first we sort
-        for (int lcv = 0; lcv < books.size()-1; lcv++) {
-            if (books.get(lcv).getAuthor().compareTo(books.get(lcv+1).getAuthor()) > 0) {
-                Book temp = books.get(lcv);
-                books.set(lcv, books.get(lcv+1));
-                books.set(lcv+1, temp);
-            }
-        }
-
-        // then we search
+    public static Book searchAuthor(ArrayList<Book> books, String author) {
         int low = 0;
         int high = books.size()-1;
         while (low <= high) {

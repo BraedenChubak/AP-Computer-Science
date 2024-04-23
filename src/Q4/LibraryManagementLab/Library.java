@@ -4,14 +4,17 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Library implements LibrarySystem {
-    private ArrayList<Book> books;
+    private ArrayList<Book> titleBooks;
+    private ArrayList<Book> authorBooks;
     private ArrayList<Patron> patrons;
     private ArrayList<Transaction> transactions;
 
     public Library() {
-        books = new ArrayList<>();
+        titleBooks = new ArrayList<>();
+        authorBooks = new ArrayList<>();
         patrons = new ArrayList<>();
         transactions = new ArrayList<>();
     }
@@ -19,21 +22,33 @@ public class Library implements LibrarySystem {
     // Implement interface methods
     @Override
     public void addBook(Book book) {
-        if (books.size() == 0) {
-            books.add(book);
-        }
-        else {
-            for (int lcv = 0; lcv < books.size(); lcv++) {
-                if (book.getTitle().compareTo(books.get(lcv).getTitle()) >= 0 ) {
-                    books.add(lcv, book);
+        if (titleBooks.size() == 0) {
+            titleBooks.add(book);
+            authorBooks.add(book);
+        } else {
+            for (int lcv = 0; lcv < titleBooks.size(); lcv++) {
+                if (book.getTitle().compareTo(titleBooks.get(lcv).getTitle()) >= 0 ) {
+                    titleBooks.add(lcv, book);
                     break;
                 }
             }
-
+            for (int lcv = 0; lcv < authorBooks.size(); lcv++) {
+                if (book.getAuthor().compareTo(authorBooks.get(lcv).getAuthor()) >= 0 ) {
+                    authorBooks.add(lcv, book);
+                    break;
+                }
+            }
         }
     }
     @Override
-    public void removeBook(String isbn) { /* Implementation */ }
+    public void removeBook(String isbn) {
+        for (Book book : titleBooks) {
+            if (isbn.equals(book.getIsbn())) {
+                titleBooks.remove(book);
+                authorBooks.remove(book);
+            }
+        }
+    }
 
     // Other methods...
 
@@ -63,35 +78,71 @@ public class Library implements LibrarySystem {
         }
     }
 
-
     @Override
-
     public void viewMostRecentTransaction(String isbn) {
-        // Hint: Use a backward loop to find the most recent transaction
-        // If no transaction is found, print "No transactions found for ISBN: <isbn>"
+        for (int lcv = transactions.size()-1; lcv >= 0; lcv--) {
+            if (isbn.equals(transactions.get(lcv).getIsbn())) {
+                System.out.println(transactions.get(lcv));
+            }
+        }
     }
 
-    // TODO: Complete the implementation of LibrarySystem methods
+    @Override
+    public boolean checkoutBook(String isbn, String patronId) {
+        for (int lcv = 0; lcv <= titleBooks.size(); lcv++) {
+            if (isbn.equals(titleBooks.get(lcv).getIsbn())) {
+                if (titleBooks.get(lcv).isAvailable()) {
+                    createTransaction(isbn, patronId, getDateToday());
+                    titleBooks.get(lcv).setCheckedOut(true);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-    // boolean checkoutBook(String isbn, String patronId)
+    @Override
+    public boolean checkinBook(String isbn, String patronId) {
+        for (int lcv = 0; lcv <= titleBooks.size(); lcv++) {
+            if (isbn.equals(titleBooks.get(lcv).getIsbn())) {
+                if (titleBooks.get(lcv).isAvailable()) {
+                    updateTransaction(isbn, patronId, getDateToday());
+                    titleBooks.get(lcv).setCheckedOut(false);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-    // boolean checkinBook(String isbn, String patronId)
-
-    // TODO: Implement searchBookByTitle and searchBookByAuthor using binary search
 
     @Override
     public Book findClosestBook(String title) {
-        // TODO: Search for the closest book title using .toLowerCase() and .contains(); return the closest book or null
+        for (Book book : titleBooks) {
+            if (title.toLowerCase().contains(book.getTitle().toLowerCase()) || book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                return book;
+            }
+            return null;
+        }
     }
 
     @Override
     public Book searchBookByTitle(String title) {
-        // TODO: Binary search for book; if not found, return the closest book
+        Book theBook = BinarySearchUtil.searchTitle(titleBooks, title);
+        if (theBook != null) {
+            return theBook;
+        }
+        return findClosestBook(title);
     }
 
-    // public Book searchBookByAuthor(String author)
-
-    // You might want to add some helper methods here like getBookByIsbn, getPatronById, etc.
+    @Override
+    public Book searchBookByAuthor(String author) {
+        Book theBook = BinarySearchUtil.searchAuthor(authorBooks, author);
+        if (theBook != null) {
+            return theBook;
+        }
+        return null;
+    }
 
     /* ========== DO NOT MODIFY ========== */
     public static String getDateToday() {

@@ -31,6 +31,28 @@ public class LibraryManager {
         return new ArrayList<>();
     }
 
-    // TODO: Implement main program; make a new Library object, load the catalog,
-    // add each book from the catalog to the library, then display the menu
+    public static void main(String[] args) {
+        Library library = new Library();
+        for (Book book : loadCatalog()) {
+            library.addBook(book);
+        }
+        Scanner input = new Scanner(System.in);
+        int inNum = 1;
+        while (inNum != 0) {
+            System.out.println("Welcome to the Library!" +
+                    "\n1 - Add Book" +
+                    "\n2 - Remove Book" +
+                    "\n3 - Add Patron" +
+                    "\n4 - Remove Patron" +
+                    "\n5 - Check Out Book" +
+                    "\n6 - Check In Book");
+            inNum = input.nextInt();
+            System.out.println();
+            if (inNum == 1) {
+                System.out.println("Enter the book's information!");
+                System.out.print("ISBN - ");
+                String isbn = input.nextLine();
+            }
+        }
+    }
 }
