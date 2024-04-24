@@ -89,7 +89,7 @@ public class Library implements LibrarySystem {
 
     @Override
     public boolean checkoutBook(String isbn, String patronId) {
-        for (int lcv = 0; lcv <= titleBooks.size(); lcv++) {
+        for (int lcv = 0; lcv < titleBooks.size(); lcv++) {
             if (isbn.equals(titleBooks.get(lcv).getIsbn())) {
                 if (titleBooks.get(lcv).isAvailable()) {
                     createTransaction(isbn, patronId, getDateToday());
@@ -122,8 +122,8 @@ public class Library implements LibrarySystem {
             if (title.toLowerCase().contains(book.getTitle().toLowerCase()) || book.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 return book;
             }
-            return null;
         }
+        return null;
     }
 
     @Override
