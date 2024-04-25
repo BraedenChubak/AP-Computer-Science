@@ -116,7 +116,6 @@ public class LibraryManager {
             else if (inNum == 7) {
                 System.out.print("Would you like to search by title (T) or author (A): ");
                 String choice = input.next();
-                System.out.println(choice);
                 if (choice.equals("T")) {
                     System.out.print("Enter the Title of the Book - ");
                     String temp = input.next();
