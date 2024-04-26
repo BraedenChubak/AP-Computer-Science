@@ -9,7 +9,7 @@ public class BinarySearchUtil {
         while (low <= high) {
             int mid = low + (high-low)/2;
             if (books.get(mid).getTitle().equals(title)) { return books.get(mid); }
-            if (books.get(mid).getTitle().compareTo(title) > 0) { high = mid + 1; }
+            if (books.get(mid).getTitle().compareTo(title) > 0) { low = mid + 1; }
             else { high = mid - 1; }
         }
         return null;

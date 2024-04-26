@@ -120,7 +120,6 @@ public class LibraryManager {
                     System.out.print("Enter the Title of the Book - ");
                     String temp = input.next();
                     String title = temp + input.nextLine();
-                    System.out.println(title);
                     if (library.searchBookByTitle(title) != null) {
                         System.out.println(library.searchBookByTitle(title));
                     } else {
@@ -149,5 +148,112 @@ public class LibraryManager {
     }
 }
 /*
+Welcome to the Library!
+1 - Add Book
+2 - Remove Book
+3 - Add Patron
+4 - Remove Patron
+5 - Check Out Book
+6 - Check In Book
+7 - Search Book
+8 - Search Book Transaction
+0 - Exit
+Enter Choice: 7
+
+Would you like to search by title (T) or author (A): T
+Enter the Title of the Book - Classical Myth
+Book{title='Classical Mythology', isbn='0195153448', author='Mark P. O. Morford'}
+
+Welcome to the Library!
+1 - Add Book
+2 - Remove Book
+3 - Add Patron
+4 - Remove Patron
+5 - Check Out Book
+6 - Check In Book
+7 - Search Book
+8 - Search Book Transaction
+0 - Exit
+Enter Choice: 7
+
+Would you like to search by title (T) or author (A): A
+Enter the Author of the Book - John Grisham
+Book{title='The Rainmaker', isbn='0385424736', author='John Grisham'}
+
+Welcome to the Library!
+1 - Add Book
+2 - Remove Book
+3 - Add Patron
+4 - Remove Patron
+5 - Check Out Book
+6 - Check In Book
+7 - Search Book
+8 - Search Book Transaction
+0 - Exit
+Enter Choice: 3
+
+Enter the Patron's info!
+Name - John
+ID - 12345
+
+Welcome to the Library!
+1 - Add Book
+2 - Remove Book
+3 - Add Patron
+4 - Remove Patron
+5 - Check Out Book
+6 - Check In Book
+7 - Search Book
+8 - Search Book Transaction
+0 - Exit
+Enter Choice: 5
+
+Enter the ISBN of the Book - 0195153448
+Enter the ID of the Patron - 12345
+Book checked out successfully!
+
+Welcome to the Library!
+1 - Add Book
+2 - Remove Book
+3 - Add Patron
+4 - Remove Patron
+5 - Check Out Book
+6 - Check In Book
+7 - Search Book
+8 - Search Book Transaction
+0 - Exit
+Enter Choice: 6
+
+Enter the ISBN of the Book - 0195153448
+Enter the ID of the Patron - 12345
+Book checked in successfully!
+
+Welcome to the Library!
+1 - Add Book
+2 - Remove Book
+3 - Add Patron
+4 - Remove Patron
+5 - Check Out Book
+6 - Check In Book
+7 - Search Book
+8 - Search Book Transaction
+0 - Exit
+Enter Choice: 4
+
+Enter the Patron's ID - 12345
+Patron removed from system!
+
+Welcome to the Library!
+1 - Add Book
+2 - Remove Book
+3 - Add Patron
+4 - Remove Patron
+5 - Check Out Book
+6 - Check In Book
+7 - Search Book
+8 - Search Book Transaction
+0 - Exit
+Enter Choice: 0
+
 
  */

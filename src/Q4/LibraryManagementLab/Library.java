@@ -26,17 +26,27 @@ public class Library implements LibrarySystem {
             titleBooks.add(book);
             authorBooks.add(book);
         } else {
+            boolean titleAdded = false;
+            boolean authorAdded = false;
             for (int lcv = 0; lcv < titleBooks.size(); lcv++) {
                 if (book.getTitle().compareTo(titleBooks.get(lcv).getTitle()) >= 0 ) {
                     titleBooks.add(lcv, book);
+                    titleAdded = true;
                     break;
                 }
             }
             for (int lcv = 0; lcv < authorBooks.size(); lcv++) {
                 if (book.getAuthor().compareTo(authorBooks.get(lcv).getAuthor()) >= 0 ) {
                     authorBooks.add(lcv, book);
+                    authorAdded = true;
                     break;
                 }
+            }
+            if (!titleAdded) {
+                titleBooks.add(book);
+            }
+            if (!authorAdded) {
+                authorBooks.add(book);
             }
         }
     }
@@ -60,6 +70,7 @@ public class Library implements LibrarySystem {
         for (Patron p : patrons) {
             if (p.getPatronId().equals(patronId)) {
                 patrons.remove(p);
+                System.out.println("Patron removed from system!");
                 break;
             }
         }
@@ -83,17 +94,18 @@ public class Library implements LibrarySystem {
         for (int lcv = transactions.size()-1; lcv >= 0; lcv--) {
             if (isbn.equals(transactions.get(lcv).getIsbn())) {
                 System.out.println(transactions.get(lcv));
+                break;
             }
         }
     }
 
     @Override
     public boolean checkoutBook(String isbn, String patronId) {
-        for (int lcv = 0; lcv < titleBooks.size(); lcv++) {
-            if (isbn.equals(titleBooks.get(lcv).getIsbn())) {
-                if (titleBooks.get(lcv).isAvailable()) {
+        for (Book titleBook : titleBooks) {
+            if (isbn.equals(titleBook.getIsbn())) {
+                if (titleBook.isAvailable()) {
                     createTransaction(isbn, patronId, getDateToday());
-                    titleBooks.get(lcv).setCheckedOut(true);
+                    titleBook.setCheckedOut(true);
                     return true;
                 }
             }
@@ -103,9 +115,9 @@ public class Library implements LibrarySystem {
 
     @Override
     public boolean checkinBook(String isbn, String patronId) {
-        for (int lcv = 0; lcv <= titleBooks.size(); lcv++) {
+        for (int lcv = 0; lcv < titleBooks.size(); lcv++) {
             if (isbn.equals(titleBooks.get(lcv).getIsbn())) {
-                if (titleBooks.get(lcv).isAvailable()) {
+                if (!titleBooks.get(lcv).isAvailable()) {
                     updateTransaction(isbn, patronId, getDateToday());
                     titleBooks.get(lcv).setCheckedOut(false);
                     return true;
@@ -119,7 +131,9 @@ public class Library implements LibrarySystem {
     @Override
     public Book findClosestBook(String title) {
         for (Book book : titleBooks) {
-            if (title.toLowerCase().contains(book.getTitle().toLowerCase()) || book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+            String lowerTitle = title.toLowerCase();
+            String lowerBook = book.getTitle().toLowerCase();
+            if (lowerTitle.contains(lowerBook) || lowerBook.contains(lowerTitle)) {
                 return book;
             }
         }
@@ -132,7 +146,9 @@ public class Library implements LibrarySystem {
         if (theBook != null) {
             return theBook;
         }
-        return findClosestBook(title);
+        else {
+            return findClosestBook(title);
+        }
     }
 
     @Override
@@ -141,7 +157,9 @@ public class Library implements LibrarySystem {
         if (theBook != null) {
             return theBook;
         }
-        return null;
+        else {
+            return null;
+        }
     }
 
     /* ========== DO NOT MODIFY ========== */
