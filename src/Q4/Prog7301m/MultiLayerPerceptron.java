@@ -89,7 +89,7 @@ public class MultiLayerPerceptron {
                 loss += backPropagate(X_train[i], y_train[i]);
             }
             loss /= X_train.length;
-            System.out.printf("Epoch %d\tLoss: %.6f\t\tAccuract:%.6f\n", (epoch+1), loss, accuracy(X_train, y_train));
+            System.out.printf("Epoch %d\tLoss: %.6f\t\tAccuracy:%.6f\n", (epoch+1), loss, accuracy(X_train, y_train));
         }
     }
 }
