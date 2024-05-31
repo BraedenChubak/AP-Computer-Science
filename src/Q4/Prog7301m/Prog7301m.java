@@ -80,8 +80,8 @@ public class Prog7301m {
         normalize(X_test, MAX_VAL);
 
         // Create model
-        var model = new MultiLayerPerceptron(new int[]{N_INPUTS, 100, N_CLASSES}, 0.1, new Activations.Sigmoid());
-        model.train(X_train, y_train, 10);
+        var model = new MultiLayerPerceptron(new int[]{N_INPUTS, 100, N_CLASSES}, 0.02, new Activations.Sigmoid());
+        model.train(X_train, y_train, 20);
         System.out.println("Final Accuracy: " + model.accuracy(X_test, y_test));
 
         // Pick a random image from test set (validation point)
@@ -99,7 +99,7 @@ public class Prog7301m {
         var img = new BufferedImage(28, 28, BufferedImage.TYPE_INT_RGB);
         for (int r = 0; r < 28; r++) {
             for (int c = 0; c < 28; c++) {
-                img.setRGB(c, r, (int)(X_val[r*28 + c] * MAX_VAL));
+                img.setRGB(c, r, (int) (X_val[r*28 + c] * MAX_VAL));
             }
         }
         var frame = new JFrame("Image");
