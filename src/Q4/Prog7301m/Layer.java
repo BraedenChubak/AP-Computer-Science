@@ -1,7 +1,9 @@
 package Q4.Prog7301m;
 
-public class Layer {
-    class Neuron {
+import java.io.Serializable;
+
+public class Layer implements Serializable{
+    static class Neuron implements Serializable {
         public double[] Weights;
         public double Bias;
         public double Value;  // a_i^(l)
@@ -21,7 +23,7 @@ public class Layer {
     public Neuron[] Neurons;
     public int Size;
 
-    public Layer(int neurons, int prevLayerSize) {
+    public Layer (int neurons, int prevLayerSize) {
         Size = neurons;
         Neurons = new Neuron[Size];
         for (int i = 0; i < Size; i++) {

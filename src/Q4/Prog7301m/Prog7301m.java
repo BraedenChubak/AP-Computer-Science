@@ -80,9 +80,12 @@ public class Prog7301m {
         normalize(X_test, MAX_VAL);
 
         // Create model
-        var model = new MultiLayerPerceptron(new int[]{N_INPUTS, 100, N_CLASSES}, 0.02, new Activations.Sigmoid());
+        var model = new MultiLayerPerceptron(new int[]{N_INPUTS, 100, N_CLASSES}, 0.05, new Activations.Sigmoid());
         model.train(X_train, y_train, 20);
         System.out.println("Final Accuracy: " + model.accuracy(X_test, y_test));
+
+        // Save Model
+        model.saveModel("Langdat/prog7301m_model.ser");
 
         // Pick a random image from test set (validation point)
         int index = (int)(Math.random() * X_test.length);
@@ -104,7 +107,7 @@ public class Prog7301m {
         }
         var frame = new JFrame("Image");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new JLabel(new ImageIcon(img)));
+        frame.add(new JLabel(new ImageIcon(img.getScaledInstance(224, 224, 4))));
         frame.pack();
         frame.setVisible(true);
     }
